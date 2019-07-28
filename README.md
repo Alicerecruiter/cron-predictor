@@ -4,9 +4,11 @@ A command line program to calculate the time of the next occurance of a simplifi
 
 Crontabs for the purposes of this calculator use the syntax: 
 
-┌───────────── minute (0 - 59)
-│ ┌───────────── hour (0 - 23)
-* * script to execute
+```
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# * * script to execute
+```
 
 # To use
 
