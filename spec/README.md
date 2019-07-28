@@ -27,4 +27,7 @@ Some assumptions are made for simplicity.
 
 ## Assumptions
 - The crontab syntax is limited to Minutes and Hours
-- Invalid minutes (<0 or >60) aren't caught and will result in the output
+
+# TODO
+
+- improve exception handling
