@@ -6,6 +6,9 @@ class Crontab
   def initialize(config)
     @config = config
     @minute, @hour, @script_name = config.split(" ")
+
+    raise ArgumentError.new("The minute value must either be '*' or a value between 0-59") unless valid_minute_value?
+    raise ArgumentError.new("The hour value must either be '*' or a value between 0-23") unless valid_hour_value?
   end
 
   def next_occurance(current_time)
@@ -42,5 +45,15 @@ class Crontab
 
   def this_minute_this_hour_crontab?(time)
     @minute.to_i == time.min && @hour.to_i == time.hour
+  end
+
+  def valid_minute_value?
+    @minute == "*" ||
+      @minute.to_i.between?(0, 59)
+  end
+
+  def valid_hour_value?
+    @hour == "*" ||
+      @hour.to_i.between?(0, 23)
   end
 end

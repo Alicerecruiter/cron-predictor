@@ -5,6 +5,24 @@ require 'time'
 RSpec.describe Crontab do
   let(:subject) { described_class.new(config) }
 
+  describe "#new" do
+    context "with an invalid minute value in the config" do
+      let(:config) { "60 * ./example_script.rb" }
+
+      it "should raise an ArgumentError" do
+        expect { described_class.new(config) }.to raise_error(ArgumentError)
+      end
+    end
+
+    context "with an invalid hour value in the config" do
+      let(:config) { "* 24 ./example_script.rb" }
+
+      it "should raise an ArgumentError" do
+        expect { described_class.new(config) }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
   describe "#next_occurance" do
     context "with an 'every minute' crontab" do
       let(:config) { "* * ./example_script.rb" }

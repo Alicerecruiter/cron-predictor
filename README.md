@@ -1,19 +1,22 @@
 # Simple Crontab Calculator
 
-A command line program to calculate the time of the next occurance of a crontab
+A command line program to calculate the time of the next occurance of a simplified crontab.
+
+Crontabs for the purposes of this calculator use the syntax: 
+
+┌───────────── minute (0 - 59)
+│ ┌───────────── hour (0 - 23)
+* * script to execute
 
 # To use
 
 You require a Ruby runtime to run the script. Mac OS has ruby installed by default. Linux users will have to install ruby for continuing.
 
-## Make script executable
-
+Firstly, make the script executable.
 OSX 
 ```bash
 $ chmod +x ./cron_predictor.rb
 ```
-
-## Run program
 
 The program takes two arguments. The first is a time in format HH:MM and the second argument is the path to file which holds your crontabs.
 ```bash
