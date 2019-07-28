@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../lib/cron_calculator'
+require_relative '../lib/commandline_cron_calculator'
 
 RSpec.describe CommandlineCronCalculator do
   it "should produce a string representaion in the format '<time of next occurance> <today or tomorrow> - <script name>'" do
