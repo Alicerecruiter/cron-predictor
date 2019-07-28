@@ -17,13 +17,13 @@ $ chmod +x ./cron_predictor.rb
 
 The program takes two arguments. The first is a time in format HH:MM and the second argument is the path to file which holds your crontabs.
 ```bash
-./cron_predictor.rb 10:20 <path/to/your/input/file>
+./cron_predictor.rb <HH:MM> <path/to/your/input/file>
 ```
 ex. `./cron_predictor.rb 10:20 ./example_config`
 
 # To run specs
 
-This project has an external dependency on `RSpec` so you will need to install this gem to run the specs.
+This project has an external dependency on `RSpec` so you will need to install this gem to run the specs. This assumes you have [bundler](https://bundler.io/) installed.
 
 OSX
 ```bash
@@ -33,9 +33,10 @@ $ rspec spec/*spec.rb
 
 # Design decisions
 
+## Assumptions
+
 Some assumptions are made for simplicity.
 
-## Assumptions
 - The crontab syntax is limited to Minutes and Hours
 
 # TODO
