@@ -21,6 +21,16 @@ The program takes two arguments. The first is a time in format HH:MM and the sec
 ```
 ex. `./cron_predictor.rb 10:20 ./example_config`
 
+# To run specs
+
+This project has an external dependency on `RSpec` so you will need to install this gem to run the specs.
+
+OSX
+```bash
+$ bundle install
+$ rspec spec/*spec.rb
+```
+
 # Design decisions
 
 Some assumptions are made for simplicity.
