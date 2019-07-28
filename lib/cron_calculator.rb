@@ -1,4 +1,4 @@
-require './crontab'
+require_relative './crontab'
 require 'time'
 
 class CommandlineCronCalculator
@@ -7,6 +7,8 @@ class CommandlineCronCalculator
     @config_file_name = config_file_name
     @crontabs = []
     puts "reading in config file (#{@config_file_name})..."
+  rescue ArgumentError => e
+    puts "Invalid time argument - #{e.message}, please supply a valid time in the format HH:MM"
   end
 
   def call

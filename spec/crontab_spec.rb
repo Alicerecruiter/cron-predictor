@@ -1,5 +1,5 @@
 require 'rspec'
-require './crontab'
+require_relative '../lib/crontab'
 require 'time'
 
 RSpec.describe Crontab do
