@@ -6,8 +6,6 @@ class CommandlineCronCalculator
     @current_time = Time.parse(current_time, Time.now)
     @config_file_name = config_file_name
     @crontabs = []
-  rescue ArgumentError => e
-    puts "Invalid time argument - #{e.message}, please supply a valid time in the format HH:MM"
   end
 
   def call

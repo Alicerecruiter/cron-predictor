@@ -33,12 +33,13 @@ $ rspec spec/*spec.rb
 
 # Design decisions
 
+The exception handling is mostly delegated to the cron_predictor command line script.
+
 ## Assumptions
 
 Some assumptions are made for simplicity.
 
 - The crontab syntax is limited to Minutes and Hours
-- The 
 
 # TODO
 

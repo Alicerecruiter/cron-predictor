@@ -12,14 +12,4 @@ RSpec.describe CommandlineCronCalculator do
 
     crontab_calculator.call
   end
-
-  context "for invalid crontab 10:60" do
-    it "should handle the exception and display a helpful message" do
-      current_time = "10:60"
-      expected_output = "Invalid time argument - min out of range, please supply a valid time in the format HH:MM"
-
-      expect(STDOUT).to receive(:puts).with(expected_output)
-      crontab_calculator = CommandlineCronCalculator.new(current_time, "./spec/spec_crontabs")
-    end
-  end
 end
