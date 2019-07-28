@@ -2,4 +2,4 @@
 
 require './cron_calculator'
 
-CommandlineCronCalculator.new(ARGV).call
+CommandlineCronCalculator.new(ARGV[0], ARGV[1]).call

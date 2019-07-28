@@ -1,8 +1,9 @@
 require './crontab'
+require 'time'
 
 class CommandlineCronCalculator
   def initialize(current_time, config_file_name)
-    @current_time = current_time
+    @current_time = Time.parse(current_time, Time.now)
     @config_file_name = config_file_name
     @crontabs = []
     puts "reading in config file (#{@config_file_name})..."

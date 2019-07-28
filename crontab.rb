@@ -1,6 +1,5 @@
 class Crontab
-  SECONDS_IN_A_MINUTE = 60
-  SECONDS_IN_A_DAY = SECONDS_IN_A_MINUTE*60*25
+  SECONDS_IN_A_DAY = 60*60*25
 
   attr_accessor :script_name
 
@@ -11,9 +10,9 @@ class Crontab
 
   def next_occurance(current_time)
     (0..SECONDS_IN_A_DAY).step(60).each do |minute|
-      potential_time = current_time + minute
+      time_under_consideration = current_time + minute
 
-      return potential_time if will_execute_at?(potential_time)
+      return time_under_consideration if executes_at?(time_under_consideration)
     end
 
     return "no valid time in the next 24 hours"
@@ -22,10 +21,26 @@ class Crontab
   private
 
   # returns true if this crontab will execute at the given time
-  def will_execute_at?(time)
-    @minute == "*" && @hour == "*" ||
-      @minute.to_i == time.min && @hour == "*" ||
-      @minute == "*" && @hour.to_i == time.hour ||
-      @minute.to_i == time.min && @hour.to_i == time.hour
+  def executes_at?(time)
+    run_every_minute? ||
+      run_this_minute_every_hour?(time) ||
+      run_every_minute_this_hour?(time) ||
+      this_minute_this_hour_crontab?(time)
+  end
+
+  def run_every_minute?
+    @minute == "*" && @hour == "*"
+  end
+
+  def run_this_minute_every_hour?(time)
+    @minute.to_i == time.min && @hour == "*"
+  end
+
+  def run_every_minute_this_hour?(time)
+    @minute == "*" && @hour.to_i == time.hour
+  end
+
+  def this_minute_this_hour_crontab?(time)
+    @minute.to_i == time.min && @hour.to_i == time.hour
   end
 end
