@@ -33,7 +33,7 @@ class CommandlineCronCalculator
   def format_crontab_prediction(crontab)
     next_occurance = crontab.next_occurance(@current_time)
     today_or_tomorrow = today_or_tomorrow(next_occurance)
-    "#{next_occurance.strftime("%k:%M")} #{today_or_tomorrow} - #{@config_file_name}"
+    "#{next_occurance.strftime("%k:%M")} #{today_or_tomorrow} - #{crontab.script_name}"
   end
 
   def today_or_tomorrow(time)
