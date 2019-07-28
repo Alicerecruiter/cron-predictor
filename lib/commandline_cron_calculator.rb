@@ -6,7 +6,6 @@ class CommandlineCronCalculator
     @current_time = Time.parse(current_time, Time.now)
     @config_file_name = config_file_name
     @crontabs = []
-    puts "reading in config file (#{@config_file_name})..."
   rescue ArgumentError => e
     puts "Invalid time argument - #{e.message}, please supply a valid time in the format HH:MM"
   end
@@ -34,15 +33,10 @@ class CommandlineCronCalculator
 
   def format_crontab_prediction(crontab)
     next_occurance = crontab.next_occurance(@current_time)
-    today_or_tomorrow = today_or_tomorrow(next_occurance)
-    "#{next_occurance.strftime("%k:%M")} #{today_or_tomorrow} - #{crontab.script_name}"
+    "#{next_occurance.strftime("%k:%M")} #{today_or_tomorrow(next_occurance)} - #{crontab.script_name}"
   end
 
   def today_or_tomorrow(time)
-    if time.day == Time.now.day
-      "today" 
-    else
-      "tomorrow"
-    end
+    time.day == Time.now.day ? "today" : "tomorrow"
   end
 end

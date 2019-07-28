@@ -38,6 +38,7 @@ $ rspec spec/*spec.rb
 Some assumptions are made for simplicity.
 
 - The crontab syntax is limited to Minutes and Hours
+- The 
 
 # TODO
 
