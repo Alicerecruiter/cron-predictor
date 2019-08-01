@@ -12,8 +12,8 @@ class Crontab
   end
 
   def next_occurance(current_time)
-    (0..SECONDS_IN_A_DAY).step(60).each do |minute|
-      time_under_consideration = current_time + minute
+    (0..SECONDS_IN_A_DAY).step(60).each do |minutes_offset|
+      time_under_consideration = current_time + minutes_offset
 
       return time_under_consideration if executes_at?(time_under_consideration)
     end
@@ -28,7 +28,7 @@ class Crontab
     run_every_minute? ||
       run_this_minute_every_hour?(time) ||
       run_every_minute_this_hour?(time) ||
-      this_minute_this_hour_crontab?(time)
+      run_this_minute_this_hour?(time)
   end
 
   def run_every_minute?
@@ -43,7 +43,7 @@ class Crontab
     @minute == "*" && @hour.to_i == time.hour
   end
 
-  def this_minute_this_hour_crontab?(time)
+  def run_this_minute_this_hour?(time)
     @minute.to_i == time.min && @hour.to_i == time.hour
   end
 
