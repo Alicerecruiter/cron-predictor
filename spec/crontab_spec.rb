@@ -23,13 +23,13 @@ RSpec.describe Crontab do
     end
   end
 
-  describe "#next_occurance" do
+  describe "#next_occurence" do
     context "with an 'every minute' crontab" do
       let(:config) { "* * ./example_script.rb" }
       let(:current_time) { Time.now }
 
       it "returns the given time" do
-        expect(subject.next_occurance(current_time)).to eq current_time
+        expect(subject.next_occurence(current_time)).to eq current_time
       end
     end
 
@@ -40,7 +40,7 @@ RSpec.describe Crontab do
         let(:current_time) { Time.parse("10:05", Time.now) }
         
         it "returns the current_time" do
-          expect(subject.next_occurance(current_time)).to eq current_time
+          expect(subject.next_occurence(current_time)).to eq current_time
         end
       end
 
@@ -49,7 +49,7 @@ RSpec.describe Crontab do
         let(:five_past_eleven) { Time.parse("11:05", current_time) }
 
         it "returns 11:05" do
-          expect(subject.next_occurance(current_time)).to eq five_past_eleven
+          expect(subject.next_occurence(current_time)).to eq five_past_eleven
         end
       end
     end
@@ -61,7 +61,7 @@ RSpec.describe Crontab do
         let(:current_time) { Time.parse("10:00", Time.now) }
 
         it "returns the current_time" do
-          expect(subject.next_occurance(current_time)).to eq current_time
+          expect(subject.next_occurence(current_time)).to eq current_time
         end
       end
 
@@ -70,7 +70,7 @@ RSpec.describe Crontab do
         let(:ten_oclock) { Time.parse("10:00", current_time) }
 
         it "returns 10:00" do
-          expect(subject.next_occurance(current_time)).to eq ten_oclock
+          expect(subject.next_occurence(current_time)).to eq ten_oclock
         end
       end
 
@@ -80,7 +80,7 @@ RSpec.describe Crontab do
         let(:ten_oclock_tomorrow) { Time.parse("10:00", tomorrow) }
 
         it "returns 10:00 tomorrow" do
-          expect(subject.next_occurance(current_time)).to eq ten_oclock_tomorrow
+          expect(subject.next_occurence(current_time)).to eq ten_oclock_tomorrow
         end
       end
     end
@@ -92,7 +92,7 @@ RSpec.describe Crontab do
         let(:current_time) { Time.parse("10:05", Time.now) }
 
         it "returns the current_time" do
-          expect(subject.next_occurance(current_time)).to eq current_time
+          expect(subject.next_occurence(current_time)).to eq current_time
         end
       end
 
@@ -101,7 +101,7 @@ RSpec.describe Crontab do
         let(:five_past_ten) { Time.parse("10:05", current_time) }
 
         it "returns the current_time" do
-          expect(subject.next_occurance(current_time)).to eq five_past_ten
+          expect(subject.next_occurence(current_time)).to eq five_past_ten
         end
       end
 
@@ -111,7 +111,7 @@ RSpec.describe Crontab do
         let(:five_past_ten_tomorrow) { Time.parse("10:05", tomorrow) }
 
         it "returns the current_time" do
-          expect(subject.next_occurance(current_time)).to eq five_past_ten_tomorrow
+          expect(subject.next_occurence(current_time)).to eq five_past_ten_tomorrow
         end
       end
     end

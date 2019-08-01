@@ -1,6 +1,6 @@
 # Simple Crontab Calculator
 
-A command line program to calculate the time of the next occurance of a simplified crontab.
+A command line program to calculate the time of the next occurence of a simplified crontab.
 
 Crontabs for the purposes of this calculator use the syntax: 
 

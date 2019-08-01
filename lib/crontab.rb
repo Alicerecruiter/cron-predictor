@@ -11,7 +11,7 @@ class Crontab
     raise ArgumentError.new("The hour value must either be '*' or a value between 0-23") unless valid_hour_value?
   end
 
-  def next_occurance(current_time)
+  def next_occurence(current_time)
     (0..SECONDS_IN_A_DAY).step(60).each do |minutes_offset|
       time_under_consideration = current_time + minutes_offset
 

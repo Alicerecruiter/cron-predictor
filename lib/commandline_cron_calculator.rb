@@ -10,7 +10,7 @@ class CommandlineCronCalculator
 
   def call
     parse_crontabs
-    print_crontab_next_occurances
+    print_crontab_next_occurences
   end
 
   private
@@ -23,15 +23,15 @@ class CommandlineCronCalculator
     end
   end
 
-  def print_crontab_next_occurances
+  def print_crontab_next_occurences
     @crontabs.each do |crontab|
       puts format_crontab_prediction(crontab)
     end
   end
 
   def format_crontab_prediction(crontab)
-    next_occurance = crontab.next_occurance(@current_time)
-    "#{next_occurance.strftime("%k:%M")} #{today_or_tomorrow(next_occurance)} - #{crontab.script_name}"
+    next_occurence = crontab.next_occurence(@current_time)
+    "#{next_occurence.strftime("%k:%M")} #{today_or_tomorrow(next_occurence)} - #{crontab.script_name}"
   end
 
   def today_or_tomorrow(time)
