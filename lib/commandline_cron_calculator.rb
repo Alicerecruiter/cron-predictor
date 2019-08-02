@@ -2,9 +2,9 @@ require_relative './crontab'
 require 'time'
 
 class CommandlineCronCalculator
-  def initialize(current_time, config_file_name)
+  def initialize(current_time, crontab_file_name)
     @current_time = Time.parse(current_time, Time.now)
-    @config_file_name = config_file_name
+    @crontab_file_name = crontab_file_name
     @crontabs = []
   end
 
@@ -16,7 +16,7 @@ class CommandlineCronCalculator
   private
 
   def parse_crontabs
-    File.open(@config_file_name) do |file|
+    File.open(@crontab_file_name) do |file|
       file.each_line do |line|
         @crontabs << Crontab.new(line)
       end
